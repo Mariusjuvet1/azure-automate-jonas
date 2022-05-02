@@ -14,11 +14,27 @@ $httpParams = @{
     ContentType = 'application/json'
 }
 
-$Response = Invoke-RestMethod @httpParams
+$Response = Invoke-RestMethod @HttpParams
 
+$DeckAsString = "Kortstokk: "
 
-# prints all the cards
-foreach ($card in $Response)
+# Hash Table for deck suits
+$CardSuits = @{C = '♣️'; D = '♦️'; H = '♥️'; S = '♠️';}
+
+### add all the cards to one string
+foreach ($Card in $Response)
 {
-  Write-Host "Kortstokk: $($card.suit.Substring(0, 1))$($card.value)"
+  if ($Card -eq $Response[-1]){
+    #$DeckAsString += "$($Card.suit.Substring(0, 1))$($Card.value)"
+
+    # with emoji
+    $DeckAsString += "$($Card.value)$($CardSuits[$Card.suit.Substring(0, 1)])"
+  } else{
+    #$DeckAsString += "$($Card.suit.Substring(0, 1))$($Card.value),"
+
+    # with emoji
+    $DeckAsString += "$($Card.value)$($CardSuits[$Card.suit.Substring(0, 1)]),"
+  }
 }
+
+Write-Host $DeckAsString
