@@ -2,7 +2,7 @@
 param (
     [Parameter()]
     [string]
-    $resourceGroupName,
+    $resourceGroupName = "jonas-workshop-jyo3mnn4fadzg",
     [string]$subscription = "9f1b36f0-ab4c-444f-bd67-0b742263c2d6"    
 )
 
