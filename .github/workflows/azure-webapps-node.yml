@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - src/**
+  workflow_dispatch:
+  
+defaults:
+  run:
+    shell: pwsh
+    working-directory: ${{ github.workspace }}
+
+jobs:
+  blackjack:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Play BlackJack
+      run: ./src/oppgave_8.ps1
+    
+    
