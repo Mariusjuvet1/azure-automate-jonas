@@ -23,5 +23,5 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true
 
-    - name: Deploy with Bicep
-      run: ./src/funcApp/deployWithBicep.ps1
+    - name: Deploy with Az
+      run: ./src/funcApp/deployWithAz.ps1
